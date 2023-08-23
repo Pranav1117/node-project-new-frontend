@@ -33,8 +33,17 @@ text-decoration: none;
     background-color: #AC3B61;
 }
 .menu-icon{display: none;}
+.mobile{
+  display: none;
+}
 
 @media  only screen and (min-width:250px) and (max-width:750px){
+  .a{
+    display: none;
+  }
+  .mobile{
+    display: block;
+  }
 .navbar-container{
   margin-left: 2.5%;
   visibility: visible;

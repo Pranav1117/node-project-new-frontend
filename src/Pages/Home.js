@@ -38,7 +38,10 @@ function Home() {
     const token = { token: getToken };
 
     try {
-      let res = await axios.get("https://node-project-backend.onrender.com/checkloggedin", token);
+      let res = await axios.get(
+        "https://node-project-backend.onrender.com/checkloggedin",
+        token
+      );
       console.log(res.data, "checkinngg");
     } catch (err) {
       console.log(err);
@@ -79,7 +82,7 @@ function Home() {
                       className="homepage-main-big-image"
                       src={i.image}
                     />
-                  </div >
+                  </div>
                 );
               })
           ) : (
@@ -267,35 +270,30 @@ function Home() {
           )}
 
           <div className="homepage-toppost-smallpost-container">
-            {data ? (
-              data
-                .filter((i) => i.category === "Technology")
-                .map((item, index) => {
-                  return (
-                    <div className="homepage-toppost-smallpost">
-                      <Link to={`article/${item.id}`} state={isLoggedIn}>
-                        <img
-                          alt="logo"
-                          src={item.image}
-                          style={{ width: 101, height: 104 }}
-                        />
+            {data &&data
+              .filter((i) => i.id === 17)
+              .map((item, index) => {
+                return (
+                  <div className="homepage-toppost-smallpost">
+                    <Link to={`article/${item.id}`}>
+                      <img
+                        alt="logo"
+                        src={item.image}
+                        style={{ width: 101, height: 104 }}
+                      />
+                    </Link>
+                    <div className="homepage-toppost-smallpost-info">
+                      <Link
+                        className="none-underline"
+                        to={`article/${item.id}`}
+                      >
+                        <h2 className="headings">{item.name}</h2>
+                        <p>{item.desc}</p>
                       </Link>
-                      <div className="homepage-toppost-smallpost-info">
-                        <Link
-                          className="none-underline"
-                          to={`article/${item.id}`}
-                          state={isLoggedIn}
-                        >
-                          <h2 className="headings">{item.name}</h2>
-                          <p>{item.desc}</p>
-                        </Link>
-                      </div>
                     </div>
-                  );
-                })
-            ) : (
-              <h2>loading</h2>
-            )}
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>

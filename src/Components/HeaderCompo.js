@@ -28,19 +28,38 @@ const HeaderCompo = (props) => {
     setShowUser(!showUser);
   };
 
+  const [nav, setNav] = useState(false);
+  const handleNavClick = () => {
+    setNav(true);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (!e.target.closest(".menu-icon") && show) {
+        setShow(false);
+      }
+    };
+    if (show) {
+      document.addEventListener("click", handleOutsideClick);
+    }
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [show]);
+
   return (
     <div>
       <Logo />
+      <div className="a">
+        {<NavBar status={status} />}
 
-      {show && <NavBar status={status} />}
-      
-      <img
-        className="menu-icon"
-        onClick={handleClick}
-        src="https://cdn.icon-icons.com/icons2/916/PNG/512/Menu_icon_icon-icons.com_71858.png"
-        alt="logo"
-      />
-
+        <img
+          className="menu-icon"
+          onClick={handleClick}
+          src="https://cdn.icon-icons.com/icons2/916/PNG/512/Menu_icon_icon-icons.com_71858.png"
+          alt="logo"
+        />
+      </div>
       <img
         src={require("../icon/user.jpg")}
         onClick={handleClickUser}
@@ -67,6 +86,16 @@ const HeaderCompo = (props) => {
         )}
       </div>
       {/*''*/}
+
+      <div onClick={handleNavClick} className="mobile">
+        {show && <NavBar />}
+        <img
+          className="menu-icon"
+          onClick={handleClick}
+          src="https://cdn.icon-icons.com/icons2/916/PNG/512/Menu_icon_icon-icons.com_71858.png"
+          alt="logo"
+        />
+      </div>
     </div>
   );
 };

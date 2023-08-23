@@ -215,7 +215,7 @@ margin-top: 10px;
 
 
 
-@media only screen and (min-width:250px) and (max-width:750px){
+@media only screen and (min-width:250px) and (max-width:1024px){
     
     
     .App{
@@ -248,6 +248,20 @@ margin-top: 10px;
     flex-direction: column;
     
 
+}
+.homepage-hollystories-container{
+        /* justify-content: center; */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        /* margin: 15px; */
+        width: 100%;
+        /* margin-inline: auto; */
+        /* margin-left: 10%; */
+        /* align-self: center; */
+        align-content: center;
+        flex-wrap: wrap;
+        margin: 0;
 }
 .toppost-text{
     display: flex;
@@ -286,8 +300,7 @@ margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-self: center;
-    align-items: center;
-    align-content: center;
+    margin-inline: auto;
 }
 .homepage-bollystories{
     margin-bottom: 20px;
@@ -312,7 +325,7 @@ hr{
 }
 .homepage-hollystories-wrapper{
     margin-bottom: 20px;
-    width: 320px;
+    width: 90%;
     /* margin-left: 20%; */
     display: grid;
     /* place-content: center; */
